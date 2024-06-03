@@ -57,6 +57,12 @@
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
   <script src="https://unpkg.com/three@0.127.0/build/three.module.js"></script>
+  <script type="text/javascript">
+    function switchhtml(path) {
+      console.log('switching')
+      document.getElementById("html-plot").src = path;
+    }
+  </script>
 </head>
 
 <body>
@@ -188,7 +194,7 @@
   </section>
   <!-- End paper abstract -->
 
-
+  
   <section class="hero is-small">
     <div class="hero-body">
       <div class="container">
@@ -206,13 +212,36 @@
   <section class="hero is-small">
     <div class="hero-body">
       <div class="container">
-        <div class="columns-is-centered">
-          <!-- Embedding the Plotly HTML file using iframe -->
-          <iframe src="sankey.html" style="width:100%; height:500px; border:none;"></iframe>
+        <div class="columns is-centered">
+        <h2 class="title is-3">Data Distribution</h2>
       </div>
+        <div class="columns is-centered">
+          <iframe src="sankey.html" style="width:100%; height:500px; border:none;"></iframe>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+        <h2 class="title is-3">Visual</h2>
+        <radio>
+          <input type="radio" name="radio" id="radio1" onclick="switchhtml('scene_no_bbox.html')" checked>
+          <label for="radio1">No bbox</label>
+        </radio>
+        <radio>
+          <input type="radio" name="radio" id="radio2" onclick="switchhtml('scene_with_bbox.html')">
+          <label for="radio2">With bbox</label>
+        </radio>
+      </div>
+        <div class="columns is-centered">
+          <iframe id="html-plot" src="scene_no_bbox.html" style="width:100%; height:500px; border:none;"></iframe>
+        </div>
+      </div>
+    </div>
+  </section> -->
 
   <section class="section hero is-light" id="Contribution">
     <div class="container is-max-desktop">
@@ -245,6 +274,8 @@
       </div>
     </div>
   </section>
+
+  
   <br>
   <br>
   <section class="hero is-small" id="PointCloudVisualization">
@@ -275,7 +306,7 @@
             <div class="control"
               style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
               <label class="radio">
-                <input value="detection" type="radio" name="task"> <b>3D-Grounded Scene Captioning</b>
+                <input value="detection" type="radio" name="task" onclick="switchhtml('scene_with_bbox.html')"> <b>3D-Grounded Scene Captioning</b>
               </label>
 
               <span style="width:5em"></span>
@@ -319,7 +350,10 @@
         <div style="display: flex; margin-top: 20px;">
           <div style="flex: 3; height: 400px; position: relative;">
             <div id="pose_loading" style="position: absolute; left: 50%; top: 51.1%;"></div>
-            <canvas id="webgl_output" style="width: 100%; height: 100%;"></canvas>
+            <!-- <canvas id="webgl_output" style="width: 100%; height: 100%;"></canvas> -->
+            <!-- <div class="columns is-centered"> -->
+            <iframe id="html-plot" src="scene_no_bbox.html" style="width:100%; height:500px; border:none;"></iframe>
+            <!-- </div> -->
           </div>
           <div id="info" style="flex: 2; font-size: 15px; padding: 10px;">
             <span style="font-size: 25px; border-color: black;">Please select a task.</span>
