@@ -293,14 +293,14 @@
             </select>
           </div>
 
-          <div class="select is-rounded">
+          <!-- <div class="select is-rounded">
             <select id="caseSelector">
               <option value="case1">Case 1</option>
               <option value="case2">Case 2</option>
               <option value="case3">Case 3</option>
               <option value="case4">Case 4</option>
             </select>
-          </div>
+          </div> -->
 
           <div class="columns is-centered" style="position: relative; margin-top: 20px;">
             <div class="control"
@@ -360,7 +360,7 @@
           </div>
         </div>
 
-        <button id="toggleAnimation">Pause Rotation</button>
+        <!-- <button id="toggleAnimation">Pause Rotation</button> -->
       </div>
     </div>
   </section>
@@ -532,9 +532,12 @@
     document.addEventListener("DOMContentLoaded", function() {
       // Function to update the info text
       function updateInfoText(text) {
-        var infoDiv = document.getElementById("info");
-        infoDiv.innerHTML = '<span style="font-size: 25px; border-color: black;">' + text + '</span>';
-      }
+      var words = text.split(' '); // Split the text into words
+      words[0] = '<strong>' + words[0] + '</strong>'; // Make the first word bold
+      var formattedText = words.join(' '); // Rejoin the words into a single string
+      var infoDiv = document.getElementById("info");
+      infoDiv.innerHTML = '<span style="font-size: 15px; border-color: black;">' + formattedText + '</span>';  // Adjusted font size from 25px to 20px
+    }
     
       // Adding event listeners to all radio buttons
       var radios = document.querySelectorAll('input[type="radio"][name="task"]');
@@ -542,7 +545,7 @@
         radio.addEventListener('click', function() {
           switch (radio.value) {
             case 'detection':
-              updateInfoText('3D-Grounded Scene Captioning selected');
+              updateInfoText('Caption: The living Room is a blend of Modern and Vintage styles, with a touch of Minimalist design. The &lt;p&gt;wardrobe&lt;/p&gt;[&lt;wardrobe-0&gt;] in solid wood with a sleek form stands as a vintage statement piece. A set of &lt;p&gt;sofa&lt;/p&gt;[&lt;three-seat/multi-seat sofa-1&gt;] and &lt;p&gt;sofa&lt;/p&gt;[&lt;three-seat/multi-seat sofa-8&gt;], both upholstered in a neutral grey cloth, offer ample seating and a modern touch. In the center, two &lt;p&gt;coffee table&lt;/p&gt;[&lt;coffee table-2&gt;] and &lt;p&gt;coffee table&lt;/p&gt;[&lt;coffee table-3&gt;] with marble tops and black metal frames provide a minimalist aesthetic and surface space. Flanking the sofas, &lt;p&gt;armchair&lt;/p&gt;[&lt;armchair-4&gt;] and &lt;p&gt;armchair&lt;/p&gt;[&lt;armchair-5&gt;] present a modern two-tone look with their rough cloth material. The &lt;p&gt;side table&lt;/p&gt;[&lt;corner/side table-6&gt;] beside the &lt;p&gt;armchair&lt;/p&gt;[&lt;armchair-5&gt;] offers additional surface space with its modern design. Above the central seating area, the &lt;p&gt;pendant lamp&lt;/p&gt;[&lt;pendant lamp-7&gt;] with its Chinoiserie style casts a warm light, enhancing the room\'s inviting atmosphere. This layout promotes socialization and relaxation, with lighting and furniture arranged to create a comfortable and stylish living space.');
               break;
             case 'grounding':
               updateInfoText('3D Context-Dependent QA selected');
