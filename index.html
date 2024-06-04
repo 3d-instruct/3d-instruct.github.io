@@ -528,6 +528,44 @@
 
   <!-- End of Statcounter Code -->
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Function to update the info text
+      function updateInfoText(text) {
+        var infoDiv = document.getElementById("info");
+        infoDiv.innerHTML = '<span style="font-size: 25px; border-color: black;">' + text + '</span>';
+      }
+    
+      // Adding event listeners to all radio buttons
+      var radios = document.querySelectorAll('input[type="radio"][name="task"]');
+      radios.forEach(function(radio) {
+        radio.addEventListener('click', function() {
+          switch (radio.value) {
+            case 'detection':
+              updateInfoText('3D-Grounded Scene Captioning selected');
+              break;
+            case 'grounding':
+              updateInfoText('3D Context-Dependent QA selected');
+              break;
+            case 'captioning':
+              updateInfoText('Conversation task selected');
+              break;
+            case 'reasoning':
+              updateInfoText('Complex Reasoning task selected');
+              break;
+            // Uncomment and add cases for other tasks if needed
+            // case 'dialogue':
+            //   updateInfoText('Embodied Dialogue selected');
+            //   break;
+            // case 'planning':
+            //   updateInfoText('Embodied Planning selected');
+            //   break;
+          }
+        });
+      });
+    });
+    </script>
+
 </body>
 
 <script type="module">
